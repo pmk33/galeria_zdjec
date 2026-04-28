@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria Gier Komputerowych</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="#">Strona główna</a></li>
+        <li><a href="#">Galeria</a></li>
+        <li><a href="#">Kontakt</a></li>
+    </ul>
+</nav>
+<header>
+    <h1>Galeria Gier Komputerowych</h1>
+</header>
+
+<main>
+    <div class="filters">
+        <button class="filter-btn active" data-filter="all">Wszystkie</button>
+        <button class="filter-btn" data-filter="classic"> Klasyki</button>
+        <button class="filter-btn" data-filter="rpg">RPG</button>
+        <button class="filter-btn" data-filter="fps">Strzelanki</button>
+        <button class="filter-btn" data-filter="strategy">Strategie</button>
+    </div>
+
+    <section class="gallery">
+        <div class="item" data-category="classic">
+    <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/co6vy6.webp" alt="DOOM (1996)">
+            <p>DOOM (1993)</p>
+        </div>
+
+        <div class="item" data-category="classic">
+            <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/co9rkl.webp" alt="Wolfenstein 3D">
+            <p>Wolfenstein 3D</p>
+        </div>
+
+        <div class="item" data-category="classic">
+            <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/co9bg9.webp" alt="Quake">
+            <p>Quake</p>
+        </div>
+
+        <div class="item" data-category="classic">
+            <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/co1y7x.webp" alt="Duke Nukem 3D">
+            <p>Duke Nukem 3D</p>
+        </div>
+
+        <div class="item" data-category="classic">
+            <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/co6kl3.webp" alt="Diablo (1996)">
+            <p>Diablo (1996)</p>
+        </div>
+        <div class="item" data-category="rpg">
+            <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/coaarl.webp" alt="Wiedźmin 3: Dziki Gon">
+            <p>Wiedźmin 3: Dziki Gon</p>
+        </div>
+
+        <div class="item" data-category="rpg">
+            <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/co670h.png" alt="Baldur's Gate 3">
+            <p>Baldur's Gate 3</p>
+        </div>
+
+        <div class="item" data-category="rpg">
+            <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/coa9qd.webp" alt="Elden Ring">
+            <p>Elden Ring</p>
+        </div>
+
+        <div class="item" data-category="rpg">
+            <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/coaih8.webp" alt="Cyberpunk 2077">
+            <p>Cyberpunk 2077</p>
+        </div>
+
+        <div class="item" data-category="fps">
+            <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/coaczd.webp"alt="Counter-Strike 2">
+            <p>Counter-Strike 2</p>
+        </div>
+
+        <div class="item" data-category="fps">
+            <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/co3p5n.webp" alt="DOOM Eternal">
+            <p>DOOM Eternal</p>
+        </div>
+
+        <div class="item" data-category="fps">
+            <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/co7ctx.webp" alt="Call of Duty: Modern Warfare III">
+            <p>Call of Duty: MW III</p>
+        </div>
+
+        <div class="item" data-category="fps">
+            <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/co9f5l.webp" alt="Overwatch 2">
+            <p>Overwatch 2</p>
+        </div>
+
+        <div class="item" data-category="strategy">
+            <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/co1tnn.webp" alt="StarCraft II">
+            <p>StarCraft II</p>
+        </div>
+
+        <div class="item" data-category="strategy">
+            <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/coaaqr.webp" alt="Civilization VI">
+            <p>Civilization VI</p>
+        </div>
+
+        <div class="item" data-category="strategy">
+            <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/co39tg.webp" alt="Age of Empires IV">
+            <p>Age of Empires IV</p>
+        </div>
+
+        <div class="item" data-category="strategy">
+            <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/coar27.webp" alt="Frostpunk">
+            <p>Frostpunk</p>
+        </div>
+
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Galeria Gier Komputerowych</p>
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const filterButtons = document.querySelectorAll(".filter-btn");
+        const galleryItems = document.querySelectorAll(".gallery .item");
+        
+        filterButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                filterButtons.forEach(btn => btn.classList.remove("active"));
+                button.classList.add("active");
+                
+                const filterValue = button.getAttribute("data-filter");
+                
+                galleryItems.forEach(item => {
+                    const itemCategory = item.getAttribute("data-category");
+                    if (filterValue === "all" || filterValue === itemCategory) {
+                        item.classList.remove("hidden");
+                    } else {
+                        item.classList.add("hidden");
+                    }
+                });
+            });
+        });
+    });
+</script>
+</body>
+</html>
