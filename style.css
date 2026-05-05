@@ -5,47 +5,39 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 html {
-    scroll-behavior: smooth; 
+    scroll-behavior: smooth;
 }
-
 body {
     font-family: 'Outfit', sans-serif;
     background: #0a0f1c;
     color: white;
 }
-
 header {
     background: linear-gradient(135deg, #00bfff, #bfff00);
-    padding: 60px 20px;
+    padding: 60px 20px 90px;
     text-align: center;
-    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
 }
-
 header h1 {
-    font-size: 3rem;
+    font-size: clamp(1.6rem, 5vw, 3rem);
     font-weight: 800;
     letter-spacing: 1.5px;
     color: #0a0f1c;
 }
-
-/* NAV */
 nav {
     background: #111827;
     border-bottom: 2px solid #bfff00;
 }
-
 nav ul {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     list-style: none;
 }
-
 nav li {
-    margin: 10px;
+    margin: 6px 8px;
 }
-
 nav a {
     color: #bfff00;
     text-decoration: none;
@@ -54,28 +46,27 @@ nav a {
     letter-spacing: 0.5px;
     border: 1px solid transparent;
     transition: 0.3s;
+    display: block;
 }
-
 nav a:hover {
     border: 1px solid #00bfff;
     border-radius: 8px;
     background: #00bfff;
     color: black;
 }
-
 .filters {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 15px;
-    margin: 40px 20px 0;
+    gap: 12px;
+    margin: 40px 16px 0;
 }
-
 .filter-btn {
     background: transparent;
     border: 2px solid #00bfff;
     color: white;
     padding: 10px 25px;
+    min-height: 44px;
     font-family: 'Outfit', sans-serif;
     font-size: 1rem;
     font-weight: 600;
@@ -83,14 +74,12 @@ nav a:hover {
     border-radius: 30px;
     transition: 0.3s ease;
 }
-
-.filter-btn:hover, 
+.filter-btn:hover,
 .filter-btn.active {
     background: #00bfff;
     color: #0a0f1c;
     box-shadow: 0 0 15px #00bfff;
 }
-
 .gallery {
     display: flex;
     flex-wrap: wrap;
@@ -99,8 +88,6 @@ nav a:hover {
     gap: 25px;
     padding: 40px;
 }
-
-/* KARTA */
 .item {
     width: 260px;
     background: #111827;
@@ -110,20 +97,15 @@ nav a:hover {
     transition: 0.4s;
     border: 1px solid #1f2937;
 }
-
 .item.hidden {
     display: none;
 }
-
-/* OBRAZ - Dodano object-fit dla lepszego wyglądu gier */
 .item img {
     width: 100%;
     height: 350px;
     object-fit: cover;
     display: block;
 }
-
-/* PODPIS */
 .item p {
     padding: 15px;
     font-weight: 600;
@@ -131,32 +113,52 @@ nav a:hover {
     letter-spacing: 0.3px;
     color: #bfff00;
 }
-
 .item:hover {
     transform: translateY(-10px) scale(1.05);
     box-shadow: 0 0 20px #00bfff, 0 0 40px #bfff00;
 }
-
 footer {
     background: linear-gradient(135deg, #00bfff, #bfff00);
-    padding: 60px 20px;
+    padding: 80px 20px 60px;
     text-align: center;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 75%);
     margin-top: 40px;
 }
-
 @media (max-width: 900px) {
     .item {
-        width: 45%;
+        width: calc(50% - 13px);
+    }
+    .gallery {
+        padding: 30px 20px;
     }
 }
-
+@media (max-width: 640px) {
+    .gallery {
+        padding: 20px 16px;
+        gap: 16px;
+    }
+    .item img {
+        height: 280px;
+    }
+}
 @media (max-width: 500px) {
     .item {
         width: 100%;
     }
-
-    header h1 {
-        font-size: 1.8rem;
+    header {
+        clip-path: none;
+        padding: 40px 20px;
+    }
+    footer {
+        clip-path: none;
+        padding: 40px 20px;
+    }
+    .filters {
+        gap: 10px;
+        margin: 30px 12px 0;
+    }
+    nav a {
+        padding: 8px 12px;
+        font-size: 0.9rem;
     }
 }
